@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Phising Website Detector</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style>
+      .container {
+        max-width: 1000px;
+        margin-top: 40px;
+      }
+
+      .right-display {
+            margin: 80px 0 0 30px;
+
+            border-radius: 15px;
+            padding: 20px;
+            width: 400px;
+            height: 350px;
+      }
+
+      .change-color {
+            color: red;
+        }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="c col-sm-offset-1">
+          <h1>FishNet</h1>
+          <br>
+          <form role="form" method="POST" action="/">
+            <div class="form-group">
+              <input type="text" name="url" class="form-control" id="url-box" placeholder="Enter URL..." style="max-width: 300px;">
+            
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+          <br>
+          {% for error in errors %}
+            <h4>{{ error }}</h4>
+          {% endfor %}
+          <br>
+        </div>
+        <div class="col-sm-7 col-sm-offset-1">
+            <div class="right-display">
+        
+                {% if results %}
+
+                    <p> {{ results[0] }} </p>
+                    <p> {{ results[1] }} </p>
+                    <b><hr></b>
+                    
+                    {% if results[2] == 'GOOD' %}
+                        <p style="color: blue;"> <b>{{ results[2] }}</b> </p>
+                    {% else %}
+                        <p style="color: red;"> <b>{{ results[2] }}</b> </p>
+                    {% endif %} 
+                     
+                {% endif %}
+
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
